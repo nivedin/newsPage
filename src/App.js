@@ -5,7 +5,6 @@ import Article from './components/Article';
 
 function App() {
   const [articles, setArticles] = useState([]);
-  const [page, setPage] = useState(1);
   //newapi//REACT_APP_API_KEY = dc668f6769f5419388409d3b8cff9b1b
   //NYnewapi//REACT_APP_API_KEY = dOHHYL3jcwhwDaSgGwgtkUiH0pHDr3Nt
 
@@ -34,7 +33,7 @@ function App() {
     // })
   }, [])
 
-  console.log("articles", articles, page);
+  console.log("articles", articles);
 
 
   return (
