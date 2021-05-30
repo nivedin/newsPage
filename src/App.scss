@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Playfair+Display:wght@400;500&display=swap");
+
+.header {
+  padding: 2% 0;
+  border-bottom: 5px double black;
+  h1 {
+    font-size: 4vw;
+    font-family: "Playfair Display", serif;
+    text-align: center;
+  }
+}
+
+.articlesContainer {
+  padding: 2%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+  grid-gap: 32px;
+  grid-auto-flow: dense;
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: 1fr !important;
+  }
+  article {
+    border: 1px solid rgb(83, 83, 83);
+    overflow: hidden;
+    padding: 2%;
+    h1 {
+      min-height: 100px;
+      font-family: "Playfair Display", serif;
+      padding: 2% 0 0 0;
+    }
+    small {
+      display: block;
+      padding: 0 0 8px 0;
+    }
+    a {
+      text-decoration: none;
+      color: black;
+    }
+    img {
+      width: 100%;
+      min-height: 20rem;
+      max-height: 20rem;
+      object-fit: cover;
+      filter: grayscale(0.3);
+      transition: all 0.45s linear;
+      &:hover {
+        transform: scale(1.05);
+        filter: grayscale(0.85);
+      }
+    }
+    p {
+      padding: 2% 0;
+      font-family: "Noto Sans JP", sans-serif;
+    }
+  }
+}
