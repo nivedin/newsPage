@@ -4,16 +4,23 @@ import './App.scss';
 import Article from './components/Article';
 
 function App() {
-  const [articles, setArticles] = useState("");
+  const [articles, setArticles] = useState([]);
+  const [page, setPage] = useState(1);
   //newapi//REACT_APP_API_KEY = dc668f6769f5419388409d3b8cff9b1b
   //NYnewapi//REACT_APP_API_KEY = dOHHYL3jcwhwDaSgGwgtkUiH0pHDr3Nt
-  useEffect(() => {
-    axios.get(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=crimes&limit=50&api-key=${process.env.REACT_APP_API_KEY}`).then(response => {
-      console.log(response);
+
+  function getNews() {
+    axios.get(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=crimes&page=${3}&api-key=${process.env.REACT_APP_API_KEY}`).then(response => {
+      // console.log(response);
       setArticles(response.data.response.docs)
     }).catch(error => {
       console.log(error);
     })
+  }
+
+
+  useEffect(() => {
+    getNews();
     // axios.get(`https://api.nytimes.com/svc/topstories/v2/upshot.json?api-key=${process.env.REACT_APP_API_KEY}`).then(response => {
     //   console.log(response);
     //   setArticles(response.data.results)
@@ -27,7 +34,7 @@ function App() {
     // })
   }, [])
 
-  console.log(articles);
+  console.log("articles", articles, page);
 
 
   return (
@@ -57,6 +64,7 @@ function App() {
           ))
         ) : null}
       </div>
+
     </div>
   );
 }
